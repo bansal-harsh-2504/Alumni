@@ -85,20 +85,12 @@ class AlumController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request,[
-            'fname'=>'required',
-            'mname'=>'required',
-            'surname'=>'required',
-            'phone'=>'required',
-            'email' => 'required|string|email|max:255|unique:users',
-
-            'course'=>'required',
-            'profession'=>'required',
-            'location'=>'required',
-            'year_joined'=>'required',
-            'year_graduated'=>'required',
-            'gender'=>'required',
+        $this->validate($request, [
+            'fname' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
         ]);
+        
         if ($request->hasFile('cover_image')){
             $filenameWithExt=$request->file('cover_image')->getClientOriginalName();
             //Get jus file name

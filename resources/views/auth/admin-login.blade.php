@@ -87,8 +87,8 @@
                                         <div class="row">
                                             <div class="col-12 col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="register_name">Names</label>
-                                                    <input type="text" class="form-control" id="register_name" name="name" />
+                                                    <label for="register_name">Name</label>
+                                                    <input type="text" class="form-control" id="register_name" name="fname" />
                                                 </div>
                                             </div>
 

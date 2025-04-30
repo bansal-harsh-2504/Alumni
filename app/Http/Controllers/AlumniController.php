@@ -34,20 +34,12 @@ class AlumniController extends Controller
     }
     public function updateprofile($id,Request $request){
         //
-        $this->validate($request,[
-            'fname'=>'required',
-            'mname'=>'required',
-            'surname'=>'required',
-            'phone'=>'required',
-            'email' => 'required|string|email|max:255|unique:users',
-
-            'course'=>'required',
-            'profession'=>'required',
-            'location'=>'required',
-            'year_joined'=>'required',
-            'year_graduated'=>'required',
-            'gender'=>'required',
+        $this->validate($request, [
+            'fname' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
         ]);
+        
         if ($request->hasFile('cover_image')){
             $filenameWithExt=$request->file('cover_image')->getClientOriginalName();
             //Get jus file name
@@ -111,7 +103,7 @@ class AlumniController extends Controller
             //upload image
             $path=$request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
         }else{
-            $fileNameToStore='default.jpg';
+            $fileNameToStore='col_21.jpg';
         }
         $post->title=$request->input('intern-title');
         $post->location=$request->input('intern-location');
@@ -160,7 +152,7 @@ class AlumniController extends Controller
             //upload image
             $path=$request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
         }else{
-            $fileNameToStore='default.jpg';
+            $fileNameToStore='col_21.jpg';
         }
 
         $post->title=$request->input('job-title');

@@ -68,11 +68,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'gender' => 'required|string',
-            'department' => 'required|string',
-            'staffid' => 'required',
-            'job_title' => 'required',
+            'fname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
         ]);
@@ -87,7 +83,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'fname' => $data['fname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
@@ -110,7 +106,7 @@ class RegisterController extends Controller
         }else{
             $fileNameToStore='noimage.jpg';
         }
-        $admin->name=$request->input('name');
+        $admin->fname=$request->input('fname');
         $admin->job_title=$request->input('job_title');
         $admin->email=$request->input('email');
         $admin->staffID=$request->input('staffid');
@@ -124,21 +120,12 @@ class RegisterController extends Controller
     }
     protected function createAlumni(Request $request)
     {
-        $this->validate($request,[
-            'fname'=>'required',
-            'mname'=>'required',
-            'surname'=>'required',
-            'phone'=>'required',
-
-            'email' => 'required|string|email|max:255|unique:users',
+        $this->validate($request, [
+            'fname' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users',
             'password' => 'required|string|min:6',
-            'course'=>'required',
-            'profession'=>'required',
-            'location'=>'required',
-            'year_joined'=>'required',
-            'year_graduated'=>'required',
-            'gender'=>'required',
         ]);
+        
         if ($request->hasFile('cover_image')){
             $filenameWithExt=$request->file('cover_image')->getClientOriginalName();
             //Get jus file name
@@ -173,20 +160,10 @@ class RegisterController extends Controller
     }
     protected function createStudent(Request $request)
     {
-        //$this->validator($request->all())->validate();
-        $this->validate($request,[
-            'fname'=>'required',
-            'mname'=>'required',
-            'sname'=>'required',
-            'phone'=>'required',
-            'course'=>'required',
-            'email' => 'required|string|email|max:255|unique:users',
+        $this->validate($request, [
+            'fname' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users',
             'password' => 'required|string|min:6',
-            'dob'=>'required',
-            'year'=>'required',
-            'county'=>'required',
-            'register_stuid'=>'required',
-            'register_gender'=>'required'
         ]);
         if ($request->hasFile('cover_image')){
             $filenameWithExt=$request->file('cover_image')->getClientOriginalName();

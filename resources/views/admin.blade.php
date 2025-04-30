@@ -25,7 +25,7 @@
                             <tbody>
                             <tr>
                                 <td><b>Names</b></td>
-                                <td>{{$user->name}}</td>
+                                <td>{{$user->fname}}</td>
 
                             </tr>
                             <tr>

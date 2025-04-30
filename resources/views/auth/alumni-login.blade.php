@@ -82,7 +82,7 @@
             <div class="modal-content" style="background: white; border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); padding: 30px;">
                 <div class="modal-body">
 
-                    <form enctype="multipart/form-data" method="post" action="{{ url('register/$url') }}">
+                    <form enctype="multipart/form-data" method="post" action="{{ url("register/$url") }}">
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-12 col-sm-6 mb-3">
@@ -105,7 +105,7 @@
 
                             <div class="col-12 col-sm-6 mb-3">
                                 <label>Surname</label>
-                                <input type="text" class="form-control" name="surname" required>
+                                <input type="text" class="form-control" name="surname">
                             </div>
                             <div class="col-12 col-sm-6 mb-3">
                                 <label>Phone Number</label>

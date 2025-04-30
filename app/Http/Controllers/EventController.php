@@ -70,7 +70,7 @@ class EventController extends Controller
             //upload image
             $path=$request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
         }else{
-            $fileNameToStore='default.jpg';
+            $fileNameToStore='col_21.jpg';
         }
         $post=new Event;
         $post->title=$request->input('title');
